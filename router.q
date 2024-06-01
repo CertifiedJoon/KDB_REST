@@ -1,8 +1,8 @@
 \d .router
 
-routes: (enlist "server-status")!enlist `server_status;
+routes: (enlist "server-status")!enlist `serverStatus;
 
-server_status: {200}
+serverStatus: {200}
 
 register: {[url; func]
   routes[url]: func;

@@ -1,8 +1,12 @@
 \d .util
 
-extract_uri:{first "?" vs x}
+splitRequestText: {"?" vs x}
 
-extract_query_params:{
-  params: flip [vs["="]'["&" vs last "?" vs x]];
+extractUri:{first "?" vs x}
+
+extractQueryParams: {last "?" vs x}
+
+parseQueryParams:{
+  params: flip [vs["="]'["&" vs x]];
   params[0]!params[1]
  }
