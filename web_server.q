@@ -2,12 +2,21 @@
 \l util.q
 \l hdb
 
+.log.info: {(neg hopen `:../log.txt) x}
+
+
 \d .
-http_router: {.[.router.routes[.util.extract_uri[x[0]]][0]; enlist .util.extract_query_params[x[0]]]}
+httpRouter: {
+  .log.info x;
+  a:.util.splitRequestText[x];
+  .[.router.routes[a[0]]; enlist a[1]]}
 
 //params
 / {table: "tableName"}
-get_head:{[params] ?[`$params[enlist "table"][0];enlist (<;`i;10);0b;()]}
+getHead:{[params] 
+  params: .util.parseQueryParams[params];
+  .log.info params[enlist "table"][0];
+  flip ?[`$params[enlist "table"][0];enlist (<;`i;10);0b;()]}
 
 / registers
-.router.register["get-head"; `get_head];
+.router.register["get-head"; `getHead];
