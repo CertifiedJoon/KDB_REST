@@ -1,0 +1,2 @@
+export LOAD_BALANCER_PORT=5001;
+export PROXY_PORT=5000;
