@@ -1,5 +1,6 @@
 \l router.q
 \l util.q
+\l query_parser.q
 \l hdb
 
 .log.info: {(neg hopen `:../log.txt) x}
@@ -31,8 +32,34 @@ getRange:{[params]
   ?[`$.util.getVal[params;"table"];enlist (within;`i;(.util.getVal[params;"indexFrom"];.util.getVal[params;"indexTo"]);0b;()]
  }
 
-
-
+//params
+/ {// params
+/ {
+/   "table": "table_a",
+/   "columns": [
+/     {
+/       "name": "col_a",
+/       "func": "sum"
+/     },
+/     {
+/       "name": "col_b",
+/       "func": "avg"
+/     }
+/   ],
+/   "where": [
+/     {
+/       "column": "col_a",
+/       "operator": "st",
+/       "arg": 5
+/     }
+/   ],
+/   "order": "col_a",
+/   "asc": true,
+/   "group": ["col_c", "col_b"]
+/ }
+postQuery{.qp.runSelect[x]}
 
 / registers
 .router.register["get-head"; `getHead];
+.router.register["get-range"; `getRange];
+.router.register["query"; `postQuery];

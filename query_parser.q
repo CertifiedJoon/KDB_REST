@@ -3,7 +3,7 @@
 fd:`avg`sum`max`min!(avg;sum;max;min);
 od:`st`ste`lt`lte`eq`in!(<;<=;>;>=;=;in);
 
-//
+// params
 / {
 /   "table": "table_a",
 /   "columns": [
@@ -28,7 +28,7 @@ od:`st`ste`lt`lte`eq`in!(<;<=;>;>=;=;in);
 /   "group": ["col_c", "col_b"]
 / }
 
-parseSelectJson: {[d]
+runSelect: {[d]
   gb: `$d[`group];
   sort: `$d[`order];
   isasc: d[`asc];
