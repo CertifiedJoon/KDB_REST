@@ -35,5 +35,5 @@ runSelect: {[d]
   tbl: `$d[`table];
   clms: exec {(.qp.fd`$x;`$y)}'[func;name] from d[`columns];
   whr: exec {(.qp.od`$x; `$y; z)}'[operator;column;arg] from d[`where];
-  ?[tbl;whr;[count gb; gb; 0b];({x[1]}each clms)!clms]
+  ?[tbl;whr;$[c:count gb; $[c~1; first gb; gb];({x[1]}each clms)!clms]
  }

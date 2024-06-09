@@ -33,30 +33,7 @@ getRange:{[params]
  }
 
 //params
-/ {// params
-/ {
-/   "table": "table_a",
-/   "columns": [
-/     {
-/       "name": "col_a",
-/       "func": "sum"
-/     },
-/     {
-/       "name": "col_b",
-/       "func": "avg"
-/     }
-/   ],
-/   "where": [
-/     {
-/       "column": "col_a",
-/       "operator": "st",
-/       "arg": 5
-/     }
-/   ],
-/   "order": "col_a",
-/   "asc": true,
-/   "group": ["col_c", "col_b"]
-/ }
+/ refer to .qp.runSelect
 postQuery{.qp.runSelect[x]}
 
 / registers
