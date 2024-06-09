@@ -1,3 +1,14 @@
+
+// construct response header
+.h.hy: {[a;b;c;d]
+  "HTTP/1.1 "
+  ,a,$[b;"\r\nContent-Encoding: gzip";""],
+  "\r\nContent-Type: application/json",
+  "\r\nAccess-Control-Allow-Origin: *",
+  "\r\nConnection: close\r\nContent-Length: ",
+  (count d),"\r\n\r\n",
+  d:$[b:(-35!)[]&b&2000<count[d];-35!(6;d);d]}[;0]["200 OK"]
+
 .z.ph: {
   show x;
   (neg h: hopen 9901)(`httpRouter; x); result: h[];
