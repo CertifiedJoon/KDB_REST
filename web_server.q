@@ -5,10 +5,17 @@
 .log.info: {(neg hopen `:../log.txt) x}
 
 \d .
-httpRouter: {
+httpGetRouter: {
   .log.info x;
   a:.util.splitRequestText[x];
   .[.router.routes[a[0]]; enlist a[1]]}
+
+// params
+/ (route; body) 
+httpPostRouter: {
+  .log.info x[0];
+  .[.router.routes[x[0]]; x[1]]
+ }
 
 //params
 / {table: "tableName"}
@@ -23,6 +30,9 @@ getRange:{[params]
   params: .util.parseQueryParams[params];
   ?[`$.util.getVal[params;"table"];enlist (within;`i;(.util.getVal[params;"indexFrom"];.util.getVal[params;"indexTo"]);0b;()]
  }
+
+
+
 
 / registers
 .router.register["get-head"; `getHead];
